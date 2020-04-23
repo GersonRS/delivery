@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URL_API: 'http://ecommerce.test/api/',
+  URL_AUTENTICATION: 'http://ecommerce.test/oauth/token',
+  TOKEN_KEY: 'access_token'
 };
 
 /*

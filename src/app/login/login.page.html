@@ -1,0 +1,27 @@
+<ion-content padding>
+  <div class="box">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <ion-list lines="full">
+        <ion-list-header>
+          <ion-title>Login</ion-title>
+        </ion-list-header>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input ngModel type="email" name="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input ngModel type="password" name="password"></ion-input>
+        </ion-item>
+  
+        <div class="ion-padding">
+          <p text-right>Forgot Password?</p>
+          <ion-button expand="block" type="submit">Login</ion-button>
+        </div>
+      </ion-list>
+    </form>
+    <p text-center>Don't have a account?</p>
+    <ion-button expand="full" color="danger" (click)="registerModal()">Register</ion-button>
+  </div>
+</ion-content>
