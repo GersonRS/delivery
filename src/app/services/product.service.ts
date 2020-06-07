@@ -4,12 +4,12 @@ import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { take, tap, catchError } from 'rxjs/operators';
+import { take, tap, catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService  extends ApiService<Product> {
+export class ProductService extends ApiService<Product> {
 
   constructor(protected http: HttpClient) {
     super(http, environment.URL_API + 'products');
@@ -20,8 +20,8 @@ export class ProductService  extends ApiService<Product> {
       .pipe(
         take(1),
         tap(_ => this.resetParameters()),
-        catchError(this.handleError<Product[]>(`get products in promotion from ${this.API_URL}`))
+        map((products: any) => products),
+        catchError(this.handleError(`get products in promotion from ${this.API_URL}`, []))
       );
   }
-
 }

@@ -28,8 +28,8 @@ export class WelcomePage {
       .then(() => this.storage.set(environment.TUTORIAL_KEY, true));
   }
 
-  onSlideChangeStart(event) {
-    event.target.isEnd().then(isEnd => {
+  onSlideChangeStart(event: any) {
+    event.target.isEnd().then((isEnd: any) => {
       this.showSkip = !isEnd;
     });
   }

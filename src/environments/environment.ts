@@ -10,8 +10,8 @@ export const environment = {
   TOKEN_KEY: 'access_token',
   USER_KEY: 'user',
   GRANT_TYPE: 'password',
-  CLIENT_ID: 2,
-  CLIENT_SECRET: 'HD2Zui69YujyCLSqTbk35un4ldz2fo0bTks3QRQi',
+  CLIENT_ID: 1,
+  CLIENT_SECRET: '6WqDeACBzh9GXdXETvjyijjghiswbc2GHefCrnAX',
   TUTORIAL_KEY: 'app_did_tutorial'
 };
 

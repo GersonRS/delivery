@@ -1,15 +1,14 @@
-import { UserService } from './user.service';
-import { User } from '../models/user';
-import { Router } from '@angular/router';
-import { Authentication } from '../models/authentication';
-import { Platform } from '@ionic/angular';
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, from } from 'rxjs';
-import { map, switchMap, take, tap, first } from 'rxjs/operators';
-
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { BehaviorSubject, from, Observable } from 'rxjs';
+import { first, map, switchMap, take, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Authentication } from '../models/authentication';
+import { User } from '../models/user';
+import { UserService } from './user.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +24,20 @@ export class AuthenticationService {
     username: '',
     password: '',
     scope: ''
-  }
+  };
 
   constructor(
     private storage: Storage,
     private http: HttpClient,
-    private plt: Platform,
     private router: Router,
-    private userService: UserService) {
+    private userService: UserService
+  ) {
     this.loadStoredToken();
   }
 
   async loadStoredToken() {
-    const platformObs = from(this.plt.ready());
-
-    this.currentUser = platformObs
+    const storageObs = from(this.storage.ready());
+    this.currentUser = storageObs
       .pipe(
         switchMap(_ => from(this.storage.get(environment.USER_KEY))),
         map(user => {
@@ -82,21 +80,23 @@ export class AuthenticationService {
 
   public get authenticationStateSubjectValue(): User {
     return this.authenticationStateSubject.value;
-}
+  }
 
   getUser() {
     return this.authenticationStateSubject.asObservable();
   }
 
   logout() {
-    let storageObs = from(this.storage.remove(environment.TOKEN_KEY));
+    const storageObs = from(this.storage.ready());
     return storageObs
-    .pipe(
-      switchMap(_ => from(this.storage.remove(environment.USER_KEY))),
-      tap(_ => {
-        this.router.navigateByUrl('/');
-        this.authenticationStateSubject.next(null);
-      })
-    );
+      .pipe(
+        switchMap(_ => from(this.storage.remove(environment.TOKEN_KEY))),
+        switchMap(_ => from(this.storage.remove(environment.USER_KEY))),
+        tap(_ => {
+          this.router.navigateByUrl('/auth');
+          this.authenticationStateSubject.next(null);
+        }),
+        take(1)
+      );
   }
 }

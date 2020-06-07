@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar animated showCancelButton="focus" [(ngModel)]="queryText" (ionChange)="updateSchedule()"
+      (ionCancel)="showSearchbar = false" placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="swap-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Danger</ion-title>
+  </ion-toolbar>
+
+</ion-content>

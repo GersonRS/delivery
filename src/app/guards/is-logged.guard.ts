@@ -1,9 +1,9 @@
-import { AuthenticationService } from '../services/authentication.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { take, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class IsLoggedGuard implements CanActivate {
         } else {
           const roles = (user.roles.filter(role => (role.name === 'Owner')));
           if (roles.length === 0 || roles === null) {
-            this.router.navigateByUrl('user');
+            this.router.navigateByUrl('users');
           } else {
             this.router.navigateByUrl('Owner');
           }

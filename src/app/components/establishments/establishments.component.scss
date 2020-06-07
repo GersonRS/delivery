@@ -1,0 +1,53 @@
+ion-toolbar {
+  border-top: 1px solid var(--ion-color-light);
+  border-radius: 5px;
+}
+
+ion-segment {
+  background-color: var(--ion-background-color);
+  ion-button {
+    margin: 15px 5px;
+    --border-radius: 5px;
+    ion-badge,
+    ion-icon {
+      margin: 0 2px;
+    }
+    ion-badge {
+      border-radius: 10px;
+      --padding-end: 4px;
+      --padding-start: 4px;
+      --padding-bottom: 2px;
+      --padding-top: 2px;
+      --background: var(--ion-color-light);
+      --color: var(--ion-color-danger);
+    }
+  }
+
+  ion-button:last-child {
+    ion-icon {
+      border-left: 1px solid var(--ion-color-light-contrast);
+    }
+  }
+}
+
+.icon-deliveryman {
+  position: relative;
+  top: 5px;
+}
+
+.establishment {
+  border: 1px solid var(--ion-color-light);
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+.truncate {
+  width: 99%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actionSheet {
+  --width: 50%;
+}

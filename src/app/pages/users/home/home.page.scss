@@ -1,0 +1,77 @@
+ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+  svg {
+    width: 50%;
+    height: 30px;
+    margin: 0 20% 0 30%;
+    g {
+      fill: var(--ion-color-light-contrast);
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  left: 19px;
+  bottom: 15px;
+  --padding-end: 2px;
+  --padding-start: 2px;
+  --padding-bottom: 2px;
+  --padding-top: 2px;
+}
+
+.swiper-slide {
+  display: block;
+}
+
+.slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 36px 0;
+  pointer-events: none;
+}
+
+ion-slides {
+  height: 200px;
+}
+
+.slide-content {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 10px;
+  width: 50%;
+  max-height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  border-radius: 4px;
+  .slide-title {
+    color: black;
+  }
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ion-color-step-600, #ffffff);
+
+    b {
+      color: var(--ion-text-color, #000000);
+    }
+  }
+}
+
+ion-segment {
+  background-color: var(--ion-background-color);
+  ion-button {
+    height: 100px;
+    div {
+      width: 100%;
+      svg > g {
+        fill: var(--ion-color-light-contrast);
+      }
+    }
+  }
+}

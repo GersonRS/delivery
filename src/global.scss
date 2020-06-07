@@ -123,3 +123,11 @@
 .text-dark {
   color: var(--ion-color-dark);
 }
+
+.ordenation {
+  --width: 80%;
+  .action-sheet-group {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}

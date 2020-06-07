@@ -1,0 +1,131 @@
+<ion-toolbar>
+  <ion-segment scrollable>
+    <ion-button #filter size="small" color="light" (click)="openFilter()">
+      Filter
+      <ion-icon slot="end" name="filter" *ngIf="!lengthFilter"></ion-icon>
+      <ion-badge slot="end" *ngIf="lengthFilter">{{ lengthFilter }}</ion-badge>
+    </ion-button>
+    <ion-button size="small" color="light" (click)="presentActionSheet()">
+      <ion-label>
+        Ordenar
+      </ion-label>
+      <ion-icon slot="end" name="chevron-down"></ion-icon>
+    </ion-button>
+    <ion-button size="small" color="light">Entrega grátis</ion-button>
+    <ion-button size="small" color="light">
+      <ion-label>
+        tempo de espera
+      </ion-label>
+      <ion-icon slot="end" name="chevron-down"></ion-icon>
+    </ion-button>
+  </ion-segment>
+</ion-toolbar>
+<div *ngIf="establishments.length !== 0; else loading">
+  <ion-list lines="none">
+    <ion-item button *ngFor="let item of establishments" class="establishment" (click)="goTo(item.id)">
+      <ion-avatar slot="start">
+        <ion-img [src]="item.thumbnail" [alt]="item.name"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ item.name }}</h3>
+        <p>
+          <ion-icon name="time"></ion-icon><span>
+            {{ item.delivery_time_min }} -
+            {{ item.delivery_time_max }} min</span> •
+          <img src="assets/img/deliveryman.svg" alt="" class="icon-deliveryman">
+          Entrega R$ {{ item.delivery_fee }}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold='1%' (ionInfinite)="getEstablishments($event)"
+    *ngIf="this.establishmentService.hasNext()">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+<!-- Skeleton screen -->
+<ng-template #loading>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p class="truncate">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p class="truncate">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p class="truncate">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p class="truncate">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p class="truncate">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ng-template>

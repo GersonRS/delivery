@@ -52,11 +52,11 @@ export class AuthPage implements OnInit {
     await loading.present();
     this.authService.login(this.onLoginForm.value)
       .subscribe((user: User) => {
-        const roles = (user.roles.filter(role => (role.name === 'Admin')));
+        const roles = (user.roles.filter(role => (role.name === 'Owner')));
         if (roles.length === 0 || roles === null) {
-          this.router.navigateByUrl('user');
+          this.router.navigateByUrl('users');
         } else {
-          this.router.navigateByUrl('admin');
+          this.router.navigateByUrl('owner');
         }
         loading.dismiss();
       },

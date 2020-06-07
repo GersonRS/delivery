@@ -20,7 +20,7 @@ export class UserService extends ApiService<User> {
       .pipe(
         take(1),
         tap(_ => this.resetParameters()),
-        catchError(this.handleError<User>(`get user from ${this.API_URL}`))
+        catchError(this.handleError(`get user from ${this.API_URL}`))
       );
   }
 }
