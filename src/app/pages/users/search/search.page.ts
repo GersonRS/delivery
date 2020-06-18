@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPage implements OnInit {
 
-  queryText;
-  showSearchbar;
+  queryText: string;
 
-  constructor() { }
+  categories: [string, string][] = [
+    ['Mercado', 'Lanche'],
+    ['Pizza', 'Vegetariana'],
+    ['Japonesa', 'Brasileira'],
+    ['Bebidas', 'Açai'],
+    ['Doces', 'Arabe'],
+    ['Italiana', 'Chinesa']
+  ];
+
+  constructor(public route: Router) { }
 
   ngOnInit() {
   }
 
-  updateSchedule() { }
-
-  presentFilter() { }
+  goToSpecialties(link: string) {
+    this.route.navigateByUrl(`users/specialty/${link}`);
+  }
 
 }

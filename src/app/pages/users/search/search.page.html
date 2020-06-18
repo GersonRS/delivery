@@ -1,14 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar animated showCancelButton="focus" [(ngModel)]="queryText" (ionChange)="updateSchedule()"
-      (ionCancel)="showSearchbar = false" placeholder="Search">
+    <ion-searchbar animated showCancelButton="focus" [(ngModel)]="queryText" placeholder="Search">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
         <ion-icon slot="icon-only" name="swap-vertical"></ion-icon>
@@ -19,8 +18,32 @@
         <ion-icon slot="icon-only" name="options"></ion-icon>
       </ion-button>
     </ion-buttons>
-
     <ion-title class="ion-text-center">Danger</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center ion-text-center" *ngFor="let item of categories">
+      <ion-col>
+        <ion-card button (click)="goToSpecialties(item[0])">
+          <div></div>
+          <ion-card-header>
+            <ion-card-subtitle color="light">{{item[0]}}</ion-card-subtitle>
+            <!-- <ion-card-title>Card Title</ion-card-title> -->
+          </ion-card-header>
+          <ion-img [src]="'assets/img/'+item[0].toLocaleLowerCase()+'.webp'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card button (click)="goToSpecialties(item[1])">
+          <div></div>
+          <ion-card-header>
+            <ion-card-subtitle color="light">{{item[1]}}</ion-card-subtitle>
+            <!-- <ion-card-title>Card Title</ion-card-title> -->
+          </ion-card-header>
+          <ion-img [src]="'assets/img/'+item[1].toLocaleLowerCase()+'.webp'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
